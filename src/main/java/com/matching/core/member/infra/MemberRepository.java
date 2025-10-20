@@ -1,4 +1,6 @@
 package com.matching.core.member.infra;
 
-public class MemberRepository {
+import com.minisecutiry.member.infra.MiniMemberRepository;
+
+public interface MemberRepository extends MiniMemberRepository<Member> {
 }

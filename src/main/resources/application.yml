@@ -1,1 +1,42 @@
-spring.application.name=matching
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${googleClientId}
+            client-secret: ${googleSecret}
+            scope:
+              - profile
+              - email
+
+  datasource:
+    url: jdbc:postgresql://${dbUrl}/${dbName}
+    username: ${dbUser}
+    password: ${dbPass}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  servlet:
+    session:
+      cookie:
+        same-site: None
+        secure: true
+
+mini-jwt:
+  jwt-secret: ${jwtKey}
+  refresh-secret: ${refreshKey}
+
+  access-token-expiration: 3600000
+  refresh-token-expiration: 604800000
+
+  issuer: mini-app
+  algorithm: HS256
