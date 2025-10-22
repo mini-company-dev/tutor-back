@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -18,7 +19,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Tutor {
-
     @Id
     @GeneratedValue
     @Comment("고유 식별자")
@@ -30,10 +30,10 @@ public class Tutor {
     private Member member;
 
     @Comment("튜터 자기소개 영상 URL")
-    private String bioVideo;
+    private String bioVideoUrl;
 
     @Comment("튜터 한 줄 소개 문구")
-    private String shortIntro;
+    private String shortBio;
 
     @Builder.Default
     @Column(nullable = false)
@@ -44,7 +44,7 @@ public class Tutor {
     private String profileImageUrl;
 
     @Comment("튜터의 수업 스타일 설명 파일 경로 (PDF, 이미지 등)")
-    private String classStyleFile;
+    private String classStyleFileUrl;
 
     @Column(nullable = false)
     @Comment("튜터 계정 활성화 여부")
@@ -52,7 +52,24 @@ public class Tutor {
 
     @OneToMany(mappedBy = "tutor", cascade = CascadeType.REMOVE)
     @Comment("튜터가 등록한 전문분야(Specialty) 목록")
-    private List<TutorSpecialty> specialties;
+    private Set<TutorSpecialty> specialties;
+
+    public void addSpecialty(Specialty specialty) {
+        boolean exists = specialties.stream()
+                .anyMatch(ts -> ts.getSpecialty().getId().equals(specialty.getId()));
+
+        if (!exists) {
+            TutorSpecialty tutorSpecialty = TutorSpecialty.builder()
+                    .tutor(this)
+                    .specialty(specialty)
+                    .build();
+            specialties.add(tutorSpecialty);
+        }
+    }
+
+    public void removeSpecialty(UUID specialtyId) {
+        specialties.removeIf(ts -> ts.getSpecialty().getId().equals(specialtyId));
+    }
 
     @ElementCollection
     @CollectionTable(
@@ -60,6 +77,20 @@ public class Tutor {
             joinColumns = @JoinColumn(name = "tutor_id")
     )
     @Column(name = "tag", nullable = false)
-    @Comment("튜터의 주요 태그 목록 (예: '친절함', '경력 10년', '온라인 가능' 등)")
-    private List<String> tags;
+    @Comment("튜터의 주요 태그 목록")
+    private Set<String> tags;
+
+    public void updateProfile(String bioVideoUrl,
+                              String shortBio,
+                              String profileImageUrl,
+                              String classStyleFileUrl,
+                              Set<String> tags) {
+        this.bioVideoUrl = bioVideoUrl;
+        this.shortBio = shortBio;
+        this.profileImageUrl = profileImageUrl;
+        this.classStyleFileUrl = classStyleFileUrl;
+        this.tags = tags;
+    }
+
+
 }
