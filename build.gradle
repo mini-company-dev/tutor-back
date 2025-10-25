@@ -29,12 +29,12 @@ configurations {
 }
 
 repositories {
-    mavenLocal()
+//    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    implementation 'mini:security:0.0.1'
+    implementation 'io.github.mini0192:mini-secret:0.0.1'
 
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     implementation 'org.springframework.boot:spring-boot-starter-security'
