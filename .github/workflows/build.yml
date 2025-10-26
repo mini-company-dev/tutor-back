@@ -55,9 +55,9 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           port: ${{ secrets.EC2_PORT }}
           script: |
+            cd ~/back
             docker login -u ${{ secrets.DOCKERHUB_ID }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
-            docker pull ${{secrets.DOCKERHUB_USERNAME}}/tutor-backend
-            docker stop back || true
-            docker container rm back || true
-            docker run -dit -p 8080:8080 --name back ${{secrets.DOCKERHUB_USERNAME}}/tutor-backend
+            docker compose pull
+            docker compose down
+            docker compose up -d
             docker image prune -f
