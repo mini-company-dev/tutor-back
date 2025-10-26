@@ -32,7 +32,6 @@ public class SecurityFilterConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .addFilterBefore(new JwtFilterBasic(context), LoginFilterBasic.class)
-            .addFilterAt(new LoginFilterBasic(context), UsernamePasswordAuthenticationFilter.class)
             .oauth2Login(oauth -> oauth.defaultSuccessUrl("/", true));
     return http.build();
   }

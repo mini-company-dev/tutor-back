@@ -1,5 +1,6 @@
 package com.matching.core.member.view;
 
+import com.matching.config.ApiResponse;
 import com.matching.core.member.service.TutorService;
 import com.matching.core.member.view.dto.TutorRequest;
 import com.matching.core.member.view.dto.TutorResponse;
@@ -23,22 +24,25 @@ public class TutorController {
     private final TutorService tutorService;
 
     @GetMapping
-    public List<TutorResponse.TutorFindAll> findAll() {
-        return tutorService.findAll();
+    public ApiResponse<List<TutorResponse.TutorFindAll>> findAll() {
+        return ApiResponse.success(tutorService.findAll());
     }
 
     @PutMapping
-    public void update(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateTutor dto) {
+    public ApiResponse<Void> update(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateTutor dto) {
         tutorService.update(memberDetails.getId(), dto);
+        return ApiResponse.success();
     }
 
     @PostMapping("/specialty")
-    public void addSpecialty(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateSpecialty dto) {
+    public ApiResponse<Void> addSpecialty(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateSpecialty dto) {
         tutorService.addSpecialty(memberDetails.getId(), dto);
+        return ApiResponse.success();
     }
 
     @DeleteMapping("/specialty")
-    public void removeSpecialty(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateSpecialty dto) {
+    public ApiResponse<Void> removeSpecialty(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateSpecialty dto) {
         tutorService.removeSpecialty(memberDetails.getId(), dto);
+        return ApiResponse.success();
     }
 }

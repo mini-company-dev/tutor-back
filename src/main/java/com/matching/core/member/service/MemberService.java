@@ -23,10 +23,10 @@ public class MemberService {
         Member member = Member.builder()
                 .username(dto.username())
                 .name(dto.name())
-                .roles(Set.of(role.toString()))
+                .roles(Set.of(role))
                 .build();
 
-        member.updatePassword(dto.password(), passwordEncoder);
+        member.updatePassword(passwordEncoder, dto.password());
         memberRepository.save(member);
     }
 }
