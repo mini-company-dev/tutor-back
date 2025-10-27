@@ -5,6 +5,7 @@ import com.matching.core.member.view.dto.MemberRole;
 import com.minisecutiry.config.jwt.JwtProvider;
 import com.minisecutiry.member.infra.MiniMember;
 import com.minisecutiry.member.model.MiniMemberDetails;
+import com.minisecutiry.member.social.MiniGoogleOAuthMemberDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.core.GrantedAuthority;
@@ -32,6 +33,7 @@ public class CustomJwtProvider extends JwtProvider {
                         .id(id)
                         .username(claims.get("username", String.class))
                         .name(claims.get("name", String.class))
+                        .picture(claims.get("picture", String.class))
                         .roles(roles)
                         .build();
     }
@@ -42,6 +44,7 @@ public class CustomJwtProvider extends JwtProvider {
 
         claims.put("username", miniMemberDetails.getUsername());
         claims.put("name", miniMemberDetails.getName());
+        claims.put("picture", miniMemberDetails.getPicture());
 
         Set<String> roles = miniMemberDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

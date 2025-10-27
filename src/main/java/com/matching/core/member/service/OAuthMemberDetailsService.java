@@ -40,6 +40,7 @@ public class OAuthMemberDetailsService extends DefaultOAuth2UserService {
         String email = memberDetails.getEmail();
         String loginId = provider + "_" + providerId;
         String name = memberDetails.getName();
+        String picture = memberDetails.getPicture();
 
         Member member = memberRepository.findByUsername(loginId).orElseGet(() -> {
             Member savedMember = Member.builder()
@@ -47,6 +48,7 @@ public class OAuthMemberDetailsService extends DefaultOAuth2UserService {
                     .name(name)
                     .email(email)
                     .provider(provider)
+                    .picture(picture)
                     .roles(Set.of(MemberRole.ROLE_STUDENT))
                     .build();
             savedMember.updatePassword(passwordEncoder, UUID.randomUUID().toString());
