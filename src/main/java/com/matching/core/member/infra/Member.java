@@ -40,6 +40,7 @@ public class Member implements MiniMember {
     private String name;
 
     @Builder.Default
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private MemberStatus status = MemberStatus.ACTIVE;
 
@@ -47,21 +48,17 @@ public class Member implements MiniMember {
         return status.toString();
     }
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(
-            name = "member_roles",
-            joinColumns = @JoinColumn(name = "member_id")
-    )
-    @Column(name = "role")
+    @Builder.Default
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Set<MemberRole> roles;
+    private MemberRole role = MemberRole.ROLE_STUDENT;
 
     public void updateRoles(MemberRole role) {
-        roles = Set.of(role);
+        this.role = role;
     }
 
     public Set<String> getRoles() {
-        return roles.stream().map(Enum::toString).collect(Collectors.toSet());
+        return Set.of(role.toString());
     }
 
     @Builder.Default

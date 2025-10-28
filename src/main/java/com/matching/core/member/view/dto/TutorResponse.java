@@ -15,7 +15,7 @@ public class TutorResponse {
             String bioVideoUrl,
             String shortBio,
             int rating,
-            String profileImageUrl,
+            String picture,
             String classStyleFileUrl,
             boolean isActive,
             Set<String> specialties,
@@ -29,7 +29,7 @@ public class TutorResponse {
                     .bioVideoUrl(tutor.getBioVideoUrl())
                     .shortBio(tutor.getShortBio())
                     .rating(tutor.getRating())
-                    .profileImageUrl(tutor.getProfileImageUrl())
+                    .picture(tutor.getMember().getPicture())
                     .classStyleFileUrl(tutor.getClassStyleFileUrl())
                     .isActive(tutor.isActive())
                     .specialties(tutor.getSpecialties().stream().map(tutorSpecialty -> tutorSpecialty.getSpecialty().getName()).collect(Collectors.toSet()))
