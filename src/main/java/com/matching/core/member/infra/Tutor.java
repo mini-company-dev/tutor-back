@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -39,9 +40,6 @@ public class Tutor {
     @Column(nullable = false)
     @Comment("튜터 평균 평점 (0~5)")
     private int rating = 0;
-
-    @Comment("튜터 프로필 이미지 URL")
-    private String profileImageUrl;
 
     @Comment("튜터의 수업 스타일 설명 파일 경로 (PDF, 이미지 등)")
     private String classStyleFileUrl;
@@ -82,15 +80,20 @@ public class Tutor {
 
     public void updateProfile(String bioVideoUrl,
                               String shortBio,
-                              String profileImageUrl,
                               String classStyleFileUrl,
                               Set<String> tags) {
         this.bioVideoUrl = bioVideoUrl;
         this.shortBio = shortBio;
-        this.profileImageUrl = profileImageUrl;
         this.classStyleFileUrl = classStyleFileUrl;
         this.tags = tags;
     }
 
+    @Builder.Default
+    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Comment("튜터가 담당하는 학생 목록")
+    List<Student> students = new ArrayList<>();
 
+    public void addStudent(Student student) {
+        students.add(student);
+    }
 }

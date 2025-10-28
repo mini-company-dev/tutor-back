@@ -39,7 +39,6 @@ public class TutorService {
         tutor.updateProfile(
                 dto.bioVideoUrl(),
                 dto.shortBio(),
-                dto.profileImageUrl(),
                 dto.classStyleFileUrl(),
                 dto.tags()
         );

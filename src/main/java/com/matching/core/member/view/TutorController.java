@@ -17,8 +17,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/tutors")
 @RequiredArgsConstructor
-@PreAuthorize("hasAnyRole('TUTOR', 'ADMIN')")
-@SecurityRequirement(name = "bearerAuth")
 public class TutorController {
 
     private final TutorService tutorService;
@@ -29,18 +27,24 @@ public class TutorController {
     }
 
     @PutMapping
+    @PreAuthorize("hasAnyRole('TUTOR', 'ADMIN')")
+    @SecurityRequirement(name = "bearerAuth")
     public ApiResponse<Void> update(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateTutor dto) {
         tutorService.update(memberDetails.getId(), dto);
         return ApiResponse.success();
     }
 
     @PostMapping("/specialty")
+    @PreAuthorize("hasAnyRole('TUTOR', 'ADMIN')")
+    @SecurityRequirement(name = "bearerAuth")
     public ApiResponse<Void> addSpecialty(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateSpecialty dto) {
         tutorService.addSpecialty(memberDetails.getId(), dto);
         return ApiResponse.success();
     }
 
     @DeleteMapping("/specialty")
+    @PreAuthorize("hasAnyRole('TUTOR', 'ADMIN')")
+    @SecurityRequirement(name = "bearerAuth")
     public ApiResponse<Void> removeSpecialty(@AuthenticationPrincipal MiniMemberDetails memberDetails, @RequestBody TutorRequest.UpdateSpecialty dto) {
         tutorService.removeSpecialty(memberDetails.getId(), dto);
         return ApiResponse.success();

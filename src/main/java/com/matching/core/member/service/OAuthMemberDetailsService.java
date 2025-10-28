@@ -49,7 +49,7 @@ public class OAuthMemberDetailsService extends DefaultOAuth2UserService {
                     .email(email)
                     .provider(provider)
                     .picture(picture)
-                    .roles(Set.of(MemberRole.ROLE_STUDENT))
+                    .role(MemberRole.ROLE_STUDENT)
                     .build();
             savedMember.updatePassword(passwordEncoder, UUID.randomUUID().toString());
             memberRepository.save(savedMember);
