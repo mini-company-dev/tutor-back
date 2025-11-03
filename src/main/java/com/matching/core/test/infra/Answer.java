@@ -1,23 +1,26 @@
-package com.matching.core.member.infra;
+package com.matching.core.test.infra;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Comment;
 
 import java.util.UUID;
 
 @Getter
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student {
+public class Answer {
+
     @Id
     @GeneratedValue
     private UUID id;
 
+    private String content;
+    private boolean correct;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tutor_id")
-    private Tutor tutor;
+    @JoinColumn(name = "grammar_test_id")
+    private GrammarTest grammarTest;
 }

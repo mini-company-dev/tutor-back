@@ -3,7 +3,6 @@ package com.matching.core.member.infra;
 import com.matching.core.member.view.dto.MemberRole;
 import com.matching.core.member.view.dto.MemberStatus;
 import com.minisecutiry.member.infra.MiniMember;
-import com.minisecutiry.member.social.MiniGoogleOAuthMemberDetails;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +12,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Getter
 @Entity
