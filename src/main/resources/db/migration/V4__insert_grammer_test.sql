@@ -8,7 +8,7 @@ VALUES
 ('00000000-0000-0000-0000-000000000003', 'I ___ from South Korea.', 'Grammar', 'A1'),
 ('00000000-0000-0000-0000-000000000004', 'He ___ have a car.', 'Grammar', 'A1'),
 ('00000000-0000-0000-0000-000000000005', 'What time ___ it?', 'Grammar', 'A1'),
-('00000000-0000-0000-0000-000000000006', 'A ___ is a red fruit. It''s small and sweet.', 'Vocabulary', 'A1'),
+('00000000-0000-0000-0000-000000000006', 'A ___ is a red fruit. It’s small and sweet.', 'Vocabulary', 'A1'),
 ('00000000-0000-0000-0000-000000000007', 'The opposite of "big" is ___.', 'Vocabulary', 'A1'),
 ('00000000-0000-0000-0000-000000000008', 'I write with a ___.', 'Vocabulary', 'A1'),
 ('00000000-0000-0000-0000-000000000009', 'My favorite color is ___.', 'Vocabulary', 'A1'),
@@ -34,10 +34,10 @@ INSERT INTO answer (id, content, correct, grammar_test_id) VALUES
 (gen_random_uuid(), 'be', false, '00000000-0000-0000-0000-000000000003'),
 
 -- He ___ have a car.
-(gen_random_uuid(), 'don''t', false,'00000000-0000-0000-0000-000000000004'),
-(gen_random_uuid(), 'isn''t', false,'00000000-0000-0000-0000-000000000004'),
-(gen_random_uuid(), 'doesn''t', true,'00000000-0000-0000-0000-000000000004'),
-(gen_random_uuid(), 'aren''t', false,'00000000-0000-0000-0000-000000000004'),
+(gen_random_uuid(), 'don’t', false,'00000000-0000-0000-0000-000000000004'),
+(gen_random_uuid(), 'isn’t', false,'00000000-0000-0000-0000-000000000004'),
+(gen_random_uuid(), 'doesn’t', true,'00000000-0000-0000-0000-000000000004'),
+(gen_random_uuid(), 'aren’t', false,'00000000-0000-0000-0000-000000000004'),
 
 -- What time ___ it?
 (gen_random_uuid(), 'is', true,  '00000000-0000-0000-0000-000000000005'),
@@ -84,10 +84,10 @@ VALUES
 ('00000000-0000-0000-0000-000000000011', 'Yesterday, I ___ a movie.', 'Grammar', 'A2'),
 ('00000000-0000-0000-0000-000000000012', 'She is ___ than her brother.', 'Grammar', 'A2'),
 ('00000000-0000-0000-0000-000000000013', 'Are there ___ apples in the kitchen?', 'Grammar', 'A2'),
-('00000000-0000-0000-0000-000000000014', 'I''m ___ to the park tomorrow.', 'Grammar', 'A2'),
+('00000000-0000-0000-0000-000000000014', 'I’m ___ to the park tomorrow.', 'Grammar', 'A2'),
 ('00000000-0000-0000-0000-000000000015', 'He can ___ English very well.', 'Grammar', 'A2'),
 ('00000000-0000-0000-0000-000000000016', 'You can borrow books from a ___.', 'Vocabulary', 'A2'),
-('00000000-0000-0000-0000-000000000017', 'My father''s brother is my ___.', 'Vocabulary', 'A2'),
+('00000000-0000-0000-0000-000000000017', 'My father’s brother is my ___.', 'Vocabulary', 'A2'),
 ('00000000-0000-0000-0000-000000000018', 'I feel sick. I should see a ___.', 'Vocabulary', 'A2'),
 ('00000000-0000-0000-0000-000000000019', 'I usually eat ___ in the morning.', 'Vocabulary', 'A2'),
 ('00000000-0000-0000-0000-000000000020', 'He works in an ___. He is a businessman.', 'Vocabulary', 'A2');
@@ -259,10 +259,10 @@ INSERT INTO answer (id, content, correct, grammar_test_id) VALUES
 (gen_random_uuid(), 'was already starting', false, '00000000-0000-0000-0000-000000000034'),
 (gen_random_uuid(), 'starts', false, '00000000-0000-0000-0000-000000000034'),
 
-(gen_random_uuid(), 'didn''t spend', false, '00000000-0000-0000-0000-000000000035'),
-(gen_random_uuid(), 'wouldn''t spend', false, '00000000-0000-0000-0000-000000000035'),
-(gen_random_uuid(), 'hadn''t spent', true, '00000000-0000-0000-0000-000000000035'),
-(gen_random_uuid(), 'don''t spend', false, '00000000-0000-0000-0000-000000000035'),
+(gen_random_uuid(), 'didn’t spend', false, '00000000-0000-0000-0000-000000000035'),
+(gen_random_uuid(), 'wouldn’t spend', false, '00000000-0000-0000-0000-000000000035'),
+(gen_random_uuid(), 'hadn’t spent', true, '00000000-0000-0000-0000-000000000035'),
+(gen_random_uuid(), 'don’t spend', false, '00000000-0000-0000-0000-000000000035'),
 
 (gen_random_uuid(), 'tired', false, '00000000-0000-0000-0000-000000000036'),
 (gen_random_uuid(), 'exhausted', true, '00000000-0000-0000-0000-000000000036'),
